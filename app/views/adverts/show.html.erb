@@ -1,0 +1,17 @@
+<h2><%= @advert.title %></h2>
+<p><small>Posted by <%= @advert.user.email %> <%= time_ago_in_words(@advert.created_at) %> ago</small></p>
+<p><%= @advert.description %></p>
+
+<h3>Comments</h3>
+<%= render @advert.comments %>
+
+<h3>Reply to Advert</h3>
+<%= render 'comments/form' %>
+
+<%= link_to "Back", root_path %>
+<% if user_signed_in? %>
+  <% if @advert.user_id == current_user.id %>
+    <%= link_to "Edit", edit_advert_path(@advert) %>
+    <%= link_to "Delete", advert_path(@advert), method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
+<% end %>

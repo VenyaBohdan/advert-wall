@@ -1,0 +1,4 @@
+<% @adverts.each do |advert| %>
+  <h2><%= advert.title %></h2>
+  <%= link_to "View Advert", advert_path(advert), class: "btn btn-outline-secondary" %>
+<% end %>

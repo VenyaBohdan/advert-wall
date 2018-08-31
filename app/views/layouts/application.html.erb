@@ -9,6 +9,33 @@
   </head>
 
   <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <%= link_to "Advert Wall", root_path, class: "navbar-brand" %>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+          </li>
+          <% if user_signed_in? %>
+            <li class="nav-item active">
+              <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            </li>
+            <% else %>
+              <li class="nav-item active">
+                <%= link_to "Log In", new_user_session_path, class: "nav-link" %>
+              </li>
+          <% end %>
+        </ul>
+        <% if user_signed_in? %>
+          <p><%= link_to "New Advert", new_advert_path, class: "navbar-right navbar-text navbar-link" %></p>
+        <% end %>
+      </div>
+    </nav>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= yield %>
   </body>
 </html>
