@@ -1,4 +1,18 @@
-<% @adverts.each do |advert| %>
-  <h2><%= advert.title %></h2>
-  <%= link_to "View Advert", advert_path(advert), class: "btn btn-outline-secondary" %>
-<% end %>
+  <div class="card-columns">
+    <% @adverts.each do |advert| %>
+      <div class="card" style="margin-bottom: 20px;">
+        <div class="card-body">
+          <h5 class="card-title"><%= advert.title %></h5>
+        </div>
+        <div class="card-footer">
+          <%= link_to "View Advert", advert_path(advert), class: "btn btn-outline-secondary" %>
+        </div>
+      </div>
+    <% end %>
+</div>
+
+<style media="screen">
+  .card {
+    display: flex;
+  }
+</style>
